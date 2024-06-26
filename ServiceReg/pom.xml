@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>lk.ijse</groupId>
 	<artifactId>ServiceReg</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>ServiceReg</name>
 	<description>Service Registry and Discovery</description>
 	<url/>
