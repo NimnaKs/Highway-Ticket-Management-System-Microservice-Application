@@ -4,7 +4,7 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mysql:/HighwayTicketDB?createDatabaseIfNotExist=true
+    url: jdbc:mysql:/UserDB?createDatabaseIfNotExist=true
     username: root
     password: ijse@200108
   jpa:
