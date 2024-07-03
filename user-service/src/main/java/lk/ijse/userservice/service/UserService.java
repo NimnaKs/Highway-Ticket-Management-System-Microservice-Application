@@ -9,4 +9,6 @@ public interface UserService {
     void updateUser(SignUp signUp, Long id) throws Exception;
 
     void verifyUser(SignIn signIn) throws Exception;
+
+    boolean isUserExists(Long id);
 }

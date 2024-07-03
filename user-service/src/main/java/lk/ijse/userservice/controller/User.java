@@ -1,6 +1,5 @@
 package lk.ijse.userservice.controller;
 
-import jakarta.validation.Valid;
 import lk.ijse.userservice.dto.SignIn;
 import lk.ijse.userservice.exception.InvalidCredentialException;
 import lk.ijse.userservice.exception.NotFoundException;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
-public class user {
+public class User {
     private final UserService userService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -89,5 +88,19 @@ public class user {
         }
 
     }
+
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> isUserExists(@PathVariable ("id") Long id){
+        try {
+            return ResponseEntity.ok(userService.isUserExists(id));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).
+                    body("Internal server error | Vehicle Details fetched Unsuccessfully.\nMore Reason\n"
+                            +exception.getMessage());
+        }
+    }
+
+    
 
 }

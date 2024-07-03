@@ -80,4 +80,10 @@ public class UserServiceIMPL implements UserService {
             throw new InvalidCredentialException("User Credential Not Valid");
         }
     }
+
+    @Override
+    public boolean isUserExists(Long id) {
+        Optional<UserEntity> userOptional = userRepository.findById(id);
+        return  (userOptional.isPresent()) ;
+    }
 }
