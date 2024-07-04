@@ -72,4 +72,14 @@ public class Vehicle {
         }
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<?> isVehicleExists(@PathVariable ("id") Long id){
+        try {
+            return ResponseEntity.ok(vehicleService.isVehicleExists(id));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).
+                    body("Internal server error | Vehicle Details fetched Unsuccessfully.\nMore Reason\n"
+                            +exception.getMessage());
+        }
+    }
 }

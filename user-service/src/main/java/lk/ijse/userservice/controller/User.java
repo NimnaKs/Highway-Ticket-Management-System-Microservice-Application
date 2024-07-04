@@ -96,7 +96,7 @@ public class User {
             return ResponseEntity.ok(userService.isUserExists(id));
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).
-                    body("Internal server error | Vehicle Details fetched Unsuccessfully.\nMore Reason\n"
+                    body("Internal server error | User Details fetched Unsuccessfully.\nMore Reason\n"
                             +exception.getMessage());
         }
     }

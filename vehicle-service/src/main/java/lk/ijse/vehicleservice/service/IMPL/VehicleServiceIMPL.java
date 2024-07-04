@@ -58,4 +58,10 @@ public class VehicleServiceIMPL implements VehicleService {
     public List<VehicleReqRes> getAllVehicle() {
         return conversionData.convertToVehicleReqResList(vehicleRepository.findAll());
     }
+
+    @Override
+    public boolean isVehicleExists(Long id) {
+        Optional<VehicleEntity> optionalVehicle = vehicleRepository.findById(id);
+        return  (optionalVehicle.isPresent()) ;
+    }
 }

@@ -8,4 +8,5 @@ public interface VehicleService {
     String registerVehicle(VehicleReqRes vehicleResponse) throws Exception;
     void updateVehicle(Long id,VehicleReqRes vehicleResponse) throws Exception;
     List<VehicleReqRes> getAllVehicle();
+    boolean isVehicleExists(Long id);
 }
