@@ -46,6 +46,18 @@ public class Ticket {
         }
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping(value = "/updateStatus/{id}")
+    public ResponseEntity<?> updateTicketStatus(@PathVariable("id") Long id) {
+
+        try {
+            ticketService.updateTicketStatus(id);
+            return ResponseEntity.ok("Ticket status updated successfully.");
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error | Ticket update failed.\nReason: " + exception.getMessage());
+        }
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getAllTickets() {
         try {
@@ -63,6 +75,17 @@ public class Ticket {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
         } catch (Exception exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error | Failed to fetch ticket.\nReason: " + exception.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/isTicketExists/{id}")
+    public ResponseEntity<?> isTicketExists(@PathVariable ("id") Long id){
+        try {
+            return ResponseEntity.ok(ticketService.isTicketExists(id));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).
+                    body("Internal server error | Ticket Details fetched Unsuccessfully.\nMore Reason\n"
+                            +exception.getMessage());
         }
     }
 }

@@ -82,4 +82,21 @@ public class TicketServiceIMPL implements TicketService {
         }
         return conversionData.convertToTicketResponse(ticketEntityOptional.get());
     }
+
+    @Override
+    public void updateTicketStatus(Long id) {
+        Optional<TicketEntity> ticketEntityOptional = ticketRepository.findById(id);
+        if (ticketEntityOptional.isEmpty()) {
+            throw new NotFoundException("Ticket Not Exists");
+        }
+        TicketEntity ticketEntity = ticketEntityOptional.get();
+        ticketEntity.setStatus(Status.PAID);
+        ticketRepository.save(ticketEntity);
+    }
+
+    @Override
+    public boolean isTicketExists(Long id) {
+        Optional<TicketEntity> ticketEntityOptional = ticketRepository.findById(id);
+        return ticketEntityOptional.isPresent();
+    }
 }

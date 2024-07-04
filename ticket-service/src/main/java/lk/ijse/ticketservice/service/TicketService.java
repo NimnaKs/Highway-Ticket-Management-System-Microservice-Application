@@ -10,4 +10,6 @@ public interface TicketService {
     void updateTicket(Long id, TicketResReq ticketResponse) throws Exception;
     List<TicketResponse> getAllTickets();
     TicketResponse getTicketById(Long id) throws Exception;
+    void updateTicketStatus(Long id);
+    boolean isTicketExists(Long id);
 }
